@@ -1,0 +1,26 @@
+{
+  "name": "js-playwright",
+  "version": "1.0.0",
+  "description": "Playwright training project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --project=chromium",
+    "test:headed": "npx playwright test --project=chromium --headed",
+    "debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yojoman/JS-playwright.git"
+  },
+  "keywords": ["playwright"],
+  "author": "Pavel Abramuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yojoman/JS-playwright/issues"
+  },
+  "homepage": "https://github.com/yojoman/JS-playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  }
+}
