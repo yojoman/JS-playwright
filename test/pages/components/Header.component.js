@@ -1,7 +1,8 @@
 class Header {
   constructor(page) {
     this.page = page;
-    this.headerList = page.locator("//div[@id='menu']/ul/li");
+    this.logo = page.locator("//img[contains(@class,'lazyloaded')]");
+    this.headerMenuList = page.locator("//div[@id='menu']/ul/li");
   }
 }
 

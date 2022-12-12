@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 const MainPage = require("../pages/Main.page");
 
 test.describe("Main page functionality", () => {
-  test("Open main page and verify title and heading", async ({ page }) => {
+  test("Open Main page and verify title and heading", async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.navigate();
     await expect(page).toHaveTitle(
@@ -16,20 +16,34 @@ test.describe("Main page functionality", () => {
   test("Logo is visible and have alt title", async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.navigate();
-    await expect(mainPage.logo).toBeVisible();
-    await expect(mainPage.logo).toHaveAttribute("alt", "GlobalSQA");
+    await expect(mainPage.header.logo).toBeVisible();
+    await expect(mainPage.header.logo).toHaveAttribute("alt", "GlobalSQA");
   });
 
-  test("Header contains correct elements", async ({ page }) => {
+  test("Main page contains correct header menu elements", async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.navigate();
-    await expect(mainPage.header.headerList).toHaveCount(5);
-    await expect(mainPage.header.headerList).toContainText([
+    await expect(mainPage.header.headerMenuList.first()).toBeVisible();
+    await expect(mainPage.header.headerMenuList).toHaveCount(5);
+    await expect(mainPage.header.headerMenuList).toContainText([
       "Home",
       "CheatSheets",
       "Free Ebooks",
       "Tester’s Hub",
       "Contact Us",
+    ]);
+  });
+
+  test("Main page contains correct footer elements", async ({ page }) => {
+    const mainPage = new MainPage(page);
+    await mainPage.navigate();
+    await expect(mainPage.footer.calendar).toBeVisible();
+    await expect(mainPage.footer.footerMenuList.first()).toBeVisible();
+    await expect(mainPage.footer.footerMenuList).toHaveCount(3);
+    await expect(mainPage.footer.footerMenuList).toContainText([
+      "About Us",
+      "Quick Menu",
+      "Contact Info",
     ]);
   });
 });
